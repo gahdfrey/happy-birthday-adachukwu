@@ -129,7 +129,7 @@ export default function Home() {
 
       {/* Main card */}
       <div
-        className={`love-card relative z-10 rounded-3xl px-8 py-10 flex flex-col items-center gap-6 w-full max-w-md mx-4 transition-all duration-700 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        className={`love-card relative z-10 rounded-3xl px-8 py-8 flex flex-col items-center gap-4 w-full max-w-md mx-6 sm:mx-4 sm:py-10 sm:gap-6 transition-all duration-700 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         style={{ transitionDelay: '0.15s' }}
       >
         {/* Top decoration */}
@@ -142,10 +142,10 @@ export default function Home() {
         {/* Bear */}
         <div className="relative">
           <DotLottieReact
-            src="/Teddy Bear.json"
+            src="/Cute teddy bear with a gift.json"
             loop
             autoplay
-            style={{ width: 200, height: 240 }}
+            style={{ width: 160, height: 190 }}
           />
           <div
             className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-4 rounded-full blur-xl"

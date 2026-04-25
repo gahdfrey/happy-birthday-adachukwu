@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
+
 
 const CONFETTI_PIECES = Array.from({ length: 30 }, (_, i) => ({
   id: i,
@@ -252,9 +254,16 @@ export default function BirthdayPage() {
           <div style={{ opacity: heroLoaded ? 1 : 0, transition: 'opacity 0.8s ease 1s' }}>
             <div className="flex flex-col items-center gap-2 text-sm" style={{ color: '#CC5500', opacity: 0.6 }}>
               <span className="animate-glow-text">Scroll down for your message</span>
-              <div className="animate-scroll-bounce text-2xl">🧡</div>
+
+              {/* <div className="animate-scroll-bounce text-2xl">🧡</div> */}
             </div>
           </div>
+                                  <DotLottieReact
+                          src="/Teddy Bear.json"
+                          loop
+                          autoplay
+                          style={{ width: 160, height: 190 }}
+                        />
         </div>
 
         {/* Bottom border accent */}
