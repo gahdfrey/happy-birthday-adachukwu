@@ -217,7 +217,7 @@ export default function BirthdayPage() {
                 letterSpacing: '-0.02em',
               }}
             >
-              Esther! 🎂
+              My Caramel Goddess! 🎂
             </h1>
           </div>
 
