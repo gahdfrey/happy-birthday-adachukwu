@@ -104,7 +104,7 @@ export default function Home() {
       setTimeout(() => router.push("/birthday"), 1400);
     } else {
       setShake(true);
-      setErrorMsg("Hmm, that's not it... try again my sweet");
+      setErrorMsg("Hmm, that's not it... try again darling");
       setTimeout(() => {
         setShake(false);
         inputRef.current?.focus();

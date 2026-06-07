@@ -88,21 +88,9 @@ function Lightbox({
         {current + 1} / {images.length}
       </div>
 
-      {/* Prev */}
-      <button
-        onClick={(e) => { e.stopPropagation(); go("prev"); }}
-        className="absolute left-3 sm:left-6 flex items-center justify-center w-11 h-11 rounded-full text-white text-lg z-10"
-        style={{ background: "rgba(255,255,255,0.12)", backdropFilter: "blur(4px)", transition: "background 0.2s" }}
-        onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(204,85,0,0.55)")}
-        onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.12)")}
-        aria-label="Previous"
-      >
-        ‹
-      </button>
-
-      {/* Images — outgoing slides out, incoming slides in simultaneously */}
+      {/* Images — full width on mobile, nav buttons overlaid on top */}
       <div
-        className="relative flex items-center justify-center px-16 w-full h-full overflow-hidden"
+        className="relative flex items-center justify-center w-full h-full overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Outgoing image */}
@@ -113,10 +101,11 @@ function Lightbox({
             alt=""
             style={{
               position: "absolute",
-              maxHeight: "88vh",
-              maxWidth: "calc(100% - 8rem)",
+              maxHeight: "92vh",
+              maxWidth: "100%",
+              width: "100%",
               objectFit: "contain",
-              borderRadius: "16px",
+              borderRadius: "12px",
               boxShadow: "0 24px 80px rgba(0,0,0,0.6)",
               opacity: 0,
               transform: dir === "next" ? "translateX(-80px)" : "translateX(80px)",
@@ -130,10 +119,11 @@ function Lightbox({
           src={images[current]}
           alt=""
           style={{
-            maxHeight: "88vh",
-            maxWidth: "calc(100% - 8rem)",
+            maxHeight: "92vh",
+            maxWidth: "100%",
+            width: "100%",
             objectFit: "contain",
-            borderRadius: "16px",
+            borderRadius: "12px",
             boxShadow: "0 24px 80px rgba(0,0,0,0.6)",
             opacity: 1,
             transform: "translateX(0)",
@@ -142,19 +132,31 @@ function Lightbox({
               : "none",
           }}
         />
-      </div>
 
-      {/* Next */}
-      <button
-        onClick={(e) => { e.stopPropagation(); go("next"); }}
-        className="absolute right-3 sm:right-6 flex items-center justify-center w-11 h-11 rounded-full text-white text-lg z-10"
-        style={{ background: "rgba(255,255,255,0.12)", backdropFilter: "blur(4px)", transition: "background 0.2s" }}
-        onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(204,85,0,0.55)")}
-        onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.12)")}
-        aria-label="Next"
-      >
-        ›
-      </button>
+        {/* Prev — overlaid on the image */}
+        <button
+          onClick={(e) => { e.stopPropagation(); go("prev"); }}
+          className="absolute left-3 flex items-center justify-center w-10 h-10 rounded-full text-white text-xl z-10"
+          style={{ background: "rgba(0,0,0,0.35)", backdropFilter: "blur(6px)", transition: "background 0.2s" }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(204,85,0,0.65)")}
+          onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(0,0,0,0.35)")}
+          aria-label="Previous"
+        >
+          ‹
+        </button>
+
+        {/* Next — overlaid on the image */}
+        <button
+          onClick={(e) => { e.stopPropagation(); go("next"); }}
+          className="absolute right-3 flex items-center justify-center w-10 h-10 rounded-full text-white text-xl z-10"
+          style={{ background: "rgba(0,0,0,0.35)", backdropFilter: "blur(6px)", transition: "background 0.2s" }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(204,85,0,0.65)")}
+          onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.12)")}
+          aria-label="Next"
+        >
+          ›
+        </button>
+      </div>
 
       {/* Dot indicators */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
