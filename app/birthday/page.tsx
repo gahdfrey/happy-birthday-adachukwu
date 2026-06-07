@@ -678,7 +678,7 @@ export default function BirthdayPage() {
 
       {/* ===== FOOTER ===== */}
       <footer
-        className="relative py-16 px-6 text-center bg-white"
+        className="relative py-6 px-6 text-center bg-white"
         style={{ borderTop: "1px solid rgba(204,85,0,0.1)" }}
       >
         <div className="flex flex-col items-center gap-4">
