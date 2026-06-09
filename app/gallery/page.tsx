@@ -9,6 +9,16 @@ const IMAGES = [
   "/944d2e70-f128-492d-b03c-67682d613b81.JPG",
   "/d662e4a1-26f4-47da-a16b-baa1d861e28f.JPG",
   "/e18fd4ca-c4ef-40c0-9a50-dc21d9692347.JPG",
+  "/IMG_4370.JPG",
+  "/IMG_7764.JPG",
+  "/IMG_7767.JPG",
+  "/IMG_7808.JPG",
+  "/IMG_7809.JPG",
+  "/IMG_7810.JPG",
+  "/IMG_7811.JPG",
+  "/IMG_7812.JPG",
+  "/IMG_7814.JPG",
+  "/NYXF3509.JPG",
 ];
 
 const VIDEOS: string[] = [];
