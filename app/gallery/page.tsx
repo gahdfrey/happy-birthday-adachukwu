@@ -21,7 +21,7 @@ const IMAGES = [
   "/NYXF3509.JPG",
 ];
 
-const VIDEOS: string[] = [];
+const VIDEOS: string[] = ["/IMG_2251 2.MOV"];
 
 /* ─── Lightbox ────────────────────────────────────────────────────────────── */
 function Lightbox({
