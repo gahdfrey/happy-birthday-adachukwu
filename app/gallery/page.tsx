@@ -4,21 +4,27 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const IMAGES = [
-  "/fe3af7d7-e4df-4a08-8069-93dbd66e9cc6.JPG",
+  "/d662e4a1-26f4-47da-a16b-baa1d861e28f.JPG",
+
+  // "/fe3af7d7-e4df-4a08-8069-93dbd66e9cc6.JPG",
+  "/IMG_4370.JPG",
   "/38636c17-35e1-4a6a-8b63-27e956249af9.JPG",
   "/944d2e70-f128-492d-b03c-67682d613b81.JPG",
-  "/d662e4a1-26f4-47da-a16b-baa1d861e28f.JPG",
+  "/IMG_7765.JPG",
+
   "/e18fd4ca-c4ef-40c0-9a50-dc21d9692347.JPG",
-  "/IMG_4370.JPG",
-  "/IMG_7764.JPG",
-  "/IMG_7767.JPG",
-  "/IMG_7808.JPG",
-  "/IMG_7809.JPG",
-  "/IMG_7810.JPG",
-  "/IMG_7811.JPG",
+  "/fe3af7d7-e4df-4a08-8069-93dbd66e9cc6.JPG",
+
+  // "/d662e4a1-26f4-47da-a16b-baa1d861e28f.JPG",
+  // "/IMG_7765.JPG",
+  // "/IMG_7767.JPG",
+  // "/IMG_7808.JPG",
+  // "/IMG_7809.JPG",
+  // "/IMG_7810.JPG",
+  // "/IMG_7811.JPG",
   "/IMG_7812.JPG",
   "/IMG_7814.JPG",
-  "/NYXF3509.JPG",
+  // "/NYXF3509.JPG",
 ];
 
 const VIDEOS: string[] = ["/IMG_2251 2.MOV"];
@@ -46,7 +52,7 @@ function Lightbox({
       setCurrent((c) =>
         d === "next"
           ? (c + 1) % images.length
-          : (c - 1 + images.length) % images.length
+          : (c - 1 + images.length) % images.length,
       );
       setTransitioning(true);
       setTimeout(() => {
@@ -54,7 +60,7 @@ function Lightbox({
         setTransitioning(false);
       }, 380);
     },
-    [current, images.length, transitioning]
+    [current, images.length, transitioning],
   );
 
   // Keyboard navigation
@@ -71,7 +77,9 @@ function Lightbox({
   // Lock body scroll
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, []);
 
   return (
@@ -84,7 +92,10 @@ function Lightbox({
       <button
         onClick={onClose}
         className="absolute top-5 right-5 flex items-center justify-center w-10 h-10 rounded-full text-white text-xl font-bold z-10"
-        style={{ background: "rgba(255,255,255,0.12)", backdropFilter: "blur(4px)" }}
+        style={{
+          background: "rgba(255,255,255,0.12)",
+          backdropFilter: "blur(4px)",
+        }}
         aria-label="Close"
       >
         ✕
@@ -93,7 +104,10 @@ function Lightbox({
       {/* Counter */}
       <div
         className="absolute top-5 left-1/2 -translate-x-1/2 text-xs font-medium px-3 py-1 rounded-full"
-        style={{ background: "rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.8)" }}
+        style={{
+          background: "rgba(255,255,255,0.15)",
+          color: "rgba(255,255,255,0.8)",
+        }}
       >
         {current + 1} / {images.length}
       </div>
@@ -118,8 +132,10 @@ function Lightbox({
               borderRadius: "12px",
               boxShadow: "0 24px 80px rgba(0,0,0,0.6)",
               opacity: 0,
-              transform: dir === "next" ? "translateX(-80px)" : "translateX(80px)",
-              transition: "opacity 0.38s cubic-bezier(0.4,0,0.2,1), transform 0.38s cubic-bezier(0.4,0,0.2,1)",
+              transform:
+                dir === "next" ? "translateX(-80px)" : "translateX(80px)",
+              transition:
+                "opacity 0.38s cubic-bezier(0.4,0,0.2,1), transform 0.38s cubic-bezier(0.4,0,0.2,1)",
             }}
           />
         )}
@@ -145,11 +161,22 @@ function Lightbox({
 
         {/* Prev — overlaid on the image */}
         <button
-          onClick={(e) => { e.stopPropagation(); go("prev"); }}
+          onClick={(e) => {
+            e.stopPropagation();
+            go("prev");
+          }}
           className="absolute left-3 flex items-center justify-center w-10 h-10 rounded-full text-white text-xl z-10"
-          style={{ background: "rgba(0,0,0,0.35)", backdropFilter: "blur(6px)", transition: "background 0.2s" }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(204,85,0,0.65)")}
-          onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(0,0,0,0.35)")}
+          style={{
+            background: "rgba(0,0,0,0.35)",
+            backdropFilter: "blur(6px)",
+            transition: "background 0.2s",
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.background = "rgba(204,85,0,0.65)")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.background = "rgba(0,0,0,0.35)")
+          }
           aria-label="Previous"
         >
           ‹
@@ -157,11 +184,22 @@ function Lightbox({
 
         {/* Next — overlaid on the image */}
         <button
-          onClick={(e) => { e.stopPropagation(); go("next"); }}
+          onClick={(e) => {
+            e.stopPropagation();
+            go("next");
+          }}
           className="absolute right-3 flex items-center justify-center w-10 h-10 rounded-full text-white text-xl z-10"
-          style={{ background: "rgba(0,0,0,0.35)", backdropFilter: "blur(6px)", transition: "background 0.2s" }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(204,85,0,0.65)")}
-          onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.12)")}
+          style={{
+            background: "rgba(0,0,0,0.35)",
+            backdropFilter: "blur(6px)",
+            transition: "background 0.2s",
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.background = "rgba(204,85,0,0.65)")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.background = "rgba(255,255,255,0.12)")
+          }
           aria-label="Next"
         >
           ›
@@ -181,7 +219,10 @@ function Lightbox({
               setPrev(current);
               setCurrent(i);
               setTransitioning(true);
-              setTimeout(() => { setPrev(null); setTransitioning(false); }, 380);
+              setTimeout(() => {
+                setPrev(null);
+                setTransitioning(false);
+              }, 380);
             }}
             style={{
               width: i === current ? 20 : 8,
@@ -209,8 +250,10 @@ function useScrollReveal() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.05 }
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.05 },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -245,9 +288,13 @@ function PhotoItem({
       className="relative overflow-hidden rounded-2xl cursor-pointer"
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0) scale(1)" : "translateY(24px) scale(0.96)",
+        transform: visible
+          ? "translateY(0) scale(1)"
+          : "translateY(24px) scale(0.96)",
         transition: `opacity 0.6s ease ${delay}, transform 0.6s cubic-bezier(0.34,1.56,0.64,1) ${delay}`,
-        boxShadow: hovered ? "0 20px 48px rgba(204,85,0,0.3)" : "0 4px 16px rgba(0,0,0,0.1)",
+        boxShadow: hovered
+          ? "0 20px 48px rgba(204,85,0,0.3)"
+          : "0 4px 16px rgba(0,0,0,0.1)",
         background: "#f0ddd0",
       }}
       onClick={onOpen}
@@ -272,7 +319,8 @@ function PhotoItem({
       <div
         className="absolute inset-0 transition-opacity duration-300"
         style={{
-          background: "linear-gradient(to top, rgba(204,85,0,0.22), transparent 60%)",
+          background:
+            "linear-gradient(to top, rgba(204,85,0,0.22), transparent 60%)",
           opacity: hovered ? 1 : 0,
         }}
       />
@@ -294,7 +342,13 @@ function PhotoItem({
         }}
       >
         <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
-          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
+          <path
+            d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"
+            stroke="white"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            fill="none"
+          />
         </svg>
         Tap to view
       </div>
@@ -302,11 +356,18 @@ function PhotoItem({
       {/* Hover: centred expand circle */}
       <div
         className="absolute inset-0 flex items-center justify-center transition-all duration-300"
-        style={{ opacity: hovered ? 1 : 0, transform: hovered ? "scale(1)" : "scale(0.7)" }}
+        style={{
+          opacity: hovered ? 1 : 0,
+          transform: hovered ? "scale(1)" : "scale(0.7)",
+        }}
       >
         <div
           className="flex items-center justify-center w-12 h-12 rounded-full text-white"
-          style={{ background: "rgba(204,85,0,0.75)", backdropFilter: "blur(4px)", fontSize: 20 }}
+          style={{
+            background: "rgba(204,85,0,0.75)",
+            backdropFilter: "blur(4px)",
+            fontSize: 20,
+          }}
         >
           ⤢
         </div>
@@ -327,9 +388,13 @@ function VideoItem({ src, index }: { src: string; index: number }) {
       className="relative overflow-hidden rounded-2xl"
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0) scale(1)" : "translateY(24px) scale(0.96)",
+        transform: visible
+          ? "translateY(0) scale(1)"
+          : "translateY(24px) scale(0.96)",
         transition: `opacity 0.6s ease ${delay}, transform 0.6s cubic-bezier(0.34,1.56,0.64,1) ${delay}`,
-        boxShadow: hovered ? "0 20px 48px rgba(204,85,0,0.35)" : "0 4px 20px rgba(0,0,0,0.12)",
+        boxShadow: hovered
+          ? "0 20px 48px rgba(204,85,0,0.35)"
+          : "0 4px 20px rgba(0,0,0,0.12)",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -341,18 +406,26 @@ function VideoItem({ src, index }: { src: string; index: number }) {
         loop
         playsInline
         className="w-full h-auto block"
-        style={{ transform: hovered ? "scale(1.03)" : "scale(1)", transition: "transform 0.5s ease" }}
+        style={{
+          transform: hovered ? "scale(1.03)" : "scale(1)",
+          transition: "transform 0.5s ease",
+        }}
       />
       <div
         className="absolute inset-0 pointer-events-none transition-opacity duration-300"
         style={{
-          background: "linear-gradient(to top, rgba(204,85,0,0.2), transparent 60%)",
+          background:
+            "linear-gradient(to top, rgba(204,85,0,0.2), transparent 60%)",
           opacity: hovered ? 1 : 0.4,
         }}
       />
       <div
         className="absolute bottom-2 left-2 text-xs font-semibold px-2 py-1 rounded-full"
-        style={{ background: "rgba(204,85,0,0.85)", color: "white", backdropFilter: "blur(4px)" }}
+        style={{
+          background: "rgba(204,85,0,0.85)",
+          color: "white",
+          backdropFilter: "blur(4px)",
+        }}
       >
         Video
       </div>
@@ -408,16 +481,29 @@ export default function GalleryPage() {
         <button
           onClick={() => router.push("/birthday")}
           className="flex items-center gap-2 text-sm font-medium rounded-xl px-4 py-2"
-          style={{ color: "#CC5500", background: "rgba(204,85,0,0.08)", transition: "background 0.2s" }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(204,85,0,0.15)"; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(204,85,0,0.08)"; }}
+          style={{
+            color: "#CC5500",
+            background: "rgba(204,85,0,0.08)",
+            transition: "background 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.background =
+              "rgba(204,85,0,0.15)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.background =
+              "rgba(204,85,0,0.08)";
+          }}
         >
           ← Back
         </button>
         <div className="flex-1 text-center">
           <h1
             className="font-bold orange-gradient-text"
-            style={{ fontFamily: "Georgia, serif", fontSize: "clamp(1.1rem, 4vw, 1.5rem)" }}
+            style={{
+              fontFamily: "Georgia, serif",
+              fontSize: "clamp(1.1rem, 4vw, 1.5rem)",
+            }}
           >
             Gallery
           </h1>
@@ -436,7 +522,11 @@ export default function GalleryPage() {
       >
         <p
           className="text-base italic"
-          style={{ fontFamily: "Georgia, serif", color: "#9A3F00", opacity: 0.7 }}
+          style={{
+            fontFamily: "Georgia, serif",
+            color: "#9A3F00",
+            opacity: 0.7,
+          }}
         >
           Every picture, every moment — shared and created 🧡
         </p>
@@ -448,7 +538,11 @@ export default function GalleryPage() {
           {colA.map((item, i) => (
             <div key={item.src}>
               {item.type === "img" ? (
-                <PhotoItem src={item.src} index={i * 2} onOpen={() => setLightboxIndex(imgIndex(item.src))} />
+                <PhotoItem
+                  src={item.src}
+                  index={i * 2}
+                  onOpen={() => setLightboxIndex(imgIndex(item.src))}
+                />
               ) : (
                 <VideoItem src={item.src} index={i * 2} />
               )}
@@ -459,7 +553,11 @@ export default function GalleryPage() {
           {colB.map((item, i) => (
             <div key={item.src}>
               {item.type === "img" ? (
-                <PhotoItem src={item.src} index={i * 2 + 1} onOpen={() => setLightboxIndex(imgIndex(item.src))} />
+                <PhotoItem
+                  src={item.src}
+                  index={i * 2 + 1}
+                  onOpen={() => setLightboxIndex(imgIndex(item.src))}
+                />
               ) : (
                 <VideoItem src={item.src} index={i * 2 + 1} />
               )}
@@ -469,15 +567,29 @@ export default function GalleryPage() {
       </div>
 
       {/* Footer */}
-      <footer className="py-10 text-center" style={{ borderTop: "1px solid rgba(204,85,0,0.1)" }}>
+      <footer
+        className="py-10 text-center"
+        style={{ borderTop: "1px solid rgba(204,85,0,0.1)" }}
+      >
         <div className="flex justify-center gap-2 text-2xl mb-3">
           {["🧡", "🌸", "🧡"].map((e, i) => (
-            <span key={i} className="animate-heartbeat" style={{ animationDelay: `${i * 0.4}s` }}>
+            <span
+              key={i}
+              className="animate-heartbeat"
+              style={{ animationDelay: `${i * 0.4}s` }}
+            >
               {e}
             </span>
           ))}
         </div>
-        <p className="text-xs" style={{ color: "#CC5500", opacity: 0.4, fontFamily: "Georgia, serif" }}>
+        <p
+          className="text-xs"
+          style={{
+            color: "#CC5500",
+            opacity: 0.4,
+            fontFamily: "Georgia, serif",
+          }}
+        >
           Made with spice, sugar and everything nice 🌸
         </p>
       </footer>

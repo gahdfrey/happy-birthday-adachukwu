@@ -38,7 +38,8 @@ const IMAGES = [
   { id: 3, src: "/944d2e70-f128-492d-b03c-67682d613b81.JPG", delay: "0.3s" },
   { id: 4, src: "/d662e4a1-26f4-47da-a16b-baa1d861e28f.JPG", delay: "0.45s" },
   { id: 5, src: "/e18fd4ca-c4ef-40c0-9a50-dc21d9692347.JPG", delay: "0.6s" },
-  { id: 6, src: "/IMG_7764.JPG", delay: "0.75s" },
+  { id: 6, src: "/IMG_7765.JPG", delay: "0.75s" },
+  // IMG_7765.JPG,
 ];
 
 function ConfettiPiece({
@@ -558,7 +559,7 @@ export default function BirthdayPage() {
                 opacity: 0.65,
               }}
             >
-              — Be Beautiful 🌹
+              — Stay Beautiful 🌹
             </p>
           </div>
         </div>
