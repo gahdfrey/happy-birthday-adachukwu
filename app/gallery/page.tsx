@@ -350,7 +350,7 @@ function PhotoItem({
             fill="none"
           />
         </svg>
-        Tap
+        Tap to view
       </div>
 
       {/* Hover: centred expand circle */}
