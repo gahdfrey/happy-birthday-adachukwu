@@ -327,21 +327,21 @@ function PhotoItem({
 
       {/* Always-visible tap/click badge — bottom-left */}
       <div
-        className="absolute bottom-2 left-2 flex items-center gap-1 px-2 py-1 rounded-full text-white"
+        className="absolute bottom-1.5 left-1.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-white"
         style={{
-          fontSize: 10,
+          fontSize: 8,
           fontWeight: 600,
           letterSpacing: "0.04em",
-          background: "rgba(0,0,0,0.38)",
+          background: "rgba(0,0,0,0.32)",
           backdropFilter: "blur(6px)",
-          opacity: imgLoaded ? (hovered ? 0 : 0.85) : 0,
+          opacity: imgLoaded ? (hovered ? 0 : 0.75) : 0,
           transform: hovered ? "translateY(4px)" : "translateY(0)",
           transition: "opacity 0.25s ease, transform 0.25s ease",
           pointerEvents: "none",
           userSelect: "none",
         }}
       >
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
+        <svg width="7" height="7" viewBox="0 0 24 24" fill="white">
           <path
             d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"
             stroke="white"
@@ -350,7 +350,7 @@ function PhotoItem({
             fill="none"
           />
         </svg>
-        Tap to view
+        Tap
       </div>
 
       {/* Hover: centred expand circle */}
