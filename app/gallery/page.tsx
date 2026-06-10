@@ -29,6 +29,12 @@ const IMAGES = [
 
 const VIDEOS: string[] = ["/IMG_2251 2.MOV"];
 
+// Inline media — items inserted into the grid at a specific position
+// { after: index in IMAGES array, src, type }
+const INLINE_MEDIA = [
+  { afterIndex: 2, src: "/275F2077-1C1C-45F4-A89D-D822E079EA07.MOV", type: "vid" as const },
+];
+
 /* ─── Lightbox ────────────────────────────────────────────────────────────── */
 function Lightbox({
   images,
@@ -444,10 +450,22 @@ export default function GalleryPage() {
     return () => clearTimeout(t);
   }, []);
 
-  const allMedia = [
-    ...IMAGES.map((src) => ({ type: "img" as const, src })),
-    ...VIDEOS.map((src) => ({ type: "vid" as const, src })),
-  ];
+  // Build media list with inline items spliced in at their positions
+  const allMedia = (() => {
+    const list: { type: "img" | "vid"; src: string }[] = IMAGES.map((src) => ({
+      type: "img",
+      src,
+    }));
+    // Insert inline items in reverse order so earlier insertions don't shift later indices
+    [...INLINE_MEDIA]
+      .sort((a, b) => b.afterIndex - a.afterIndex)
+      .forEach(({ afterIndex, src, type }) => {
+        list.splice(afterIndex + 1, 0, { type, src });
+      });
+    // Append remaining videos at the end
+    VIDEOS.forEach((src) => list.push({ type: "vid", src }));
+    return list;
+  })();
 
   // Only images are lightbox-able; build a flat array of image srcs
   const imageSrcs = allMedia.filter((m) => m.type === "img").map((m) => m.src);
