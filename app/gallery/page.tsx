@@ -386,6 +386,7 @@ function PhotoItem({
 function VideoItem({ src, index }: { src: string; index: number }) {
   const { ref, visible } = useScrollReveal();
   const [hovered, setHovered] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const delay = `${(index % 3) * 0.1}s`;
 
   return (
@@ -393,6 +394,7 @@ function VideoItem({ src, index }: { src: string; index: number }) {
       ref={ref}
       className="relative overflow-hidden rounded-2xl"
       style={{
+        minHeight: videoLoaded ? 0 : 160,
         opacity: visible ? 1 : 0,
         transform: visible
           ? "translateY(0) scale(1)"
@@ -401,20 +403,35 @@ function VideoItem({ src, index }: { src: string; index: number }) {
         boxShadow: hovered
           ? "0 20px 48px rgba(204,85,0,0.35)"
           : "0 4px 20px rgba(0,0,0,0.12)",
+        background: "#f0ddd0",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
+      {/* Shimmer while video is buffering */}
+      {!videoLoaded && (
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(90deg, #f0ddd0 25%, #fae8dc 50%, #f0ddd0 75%)",
+            backgroundSize: "200% 100%",
+            animation: "shimmer 1.5s infinite linear",
+          }}
+        />
+      )}
       <video
         src={src}
         autoPlay
         muted
         loop
         playsInline
-        className="w-full h-auto block"
+        preload="auto"
+        onCanPlay={() => setVideoLoaded(true)}
+        className="w-full h-auto block relative"
         style={{
+          opacity: videoLoaded ? 1 : 0,
+          transition: "opacity 0.4s ease, transform 0.5s ease",
           transform: hovered ? "scale(1.03)" : "scale(1)",
-          transition: "transform 0.5s ease",
         }}
       />
       <div
